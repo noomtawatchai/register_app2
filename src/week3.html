@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE week 3</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ "tawatchai" | cap }}<br>
+        {{ "tawatchai" | cap2 }} 
+        <hr>
+        <student-component 
+            name="Tawatchai"
+            lastneme="Wantap"
+            student="3545464"
+            tel="0830464419"
+        ></student-component>
+
+        <student-component 
+            name="Tawat"
+            lastneme="Wan"
+            student="35464"
+            tel="0830464419"
+        ></student-component>
+
+        <student-component 
+            name="ธวัชชัย"
+            lastneme="วันทัพ"
+            student="354544"
+            tel="0830464419"
+        ></student-component>
+      
+        <item-componennt data="Dog"></item-componennt>
+        <item-componennt data="Cat"></item-componennt>
+        <item-componennt data="Cat1"></item-componennt>
+        <item-componennt data="Cat2"></item-componennt>
+        <hr>
+        <p>{{ number }}</p>
+        <button @click="plusNumber">เพิ่มจำนวน<</button>
+        <hr>
+        <input v-model="message">
+        <P>{{ message }}</P>
+        <button v-on:click="reMessage">สลับตัวอักษร</button>
+    </div>
+
+    <script src="js/week3.js"></script>
+</body>
+</html>

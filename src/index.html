@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+        <div id="app">
+            {{ message }} <br>
+            สวัสดีคุณ{{ fullname }} <br>
+            
+            อายุ{{ age }} <br>
+            ปีเกิด พ.ศ. {{ year + 543 }} <br>
+            <p v-if="check">RMUTL</p>
+            <hr>
+            <p>วัน</p>
+            <div v-if="check">
+            <p>{{ days[0].day }}</p>
+            <p>{{ days[1].day }}</p>
+            <p>{{ days[2].day }}</p>
+            <p>{{ days[3].day }}</p>
+            <p>{{ days[4].day }}</p>
+            <p>{{ days[5].day }}</p>
+            <p>{{ days[6].day }}</p> 
+        </div>
+
+        <div v-if="true">
+            <ul>
+                <li v-for="data in days">
+                    {{ data.day }}
+
+                </li>
+            </ul>
+        </div>
+        <script src="js/index.js"></script>
+
+</body>
+</html>
