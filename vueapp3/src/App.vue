@@ -1,11 +1,17 @@
 <template>
   <v-app>
     <v-navigation-drawer app>
-      <p>navigation-drawer</p>
+      <p>Menu</p>
+      <v-btn depressed small color="primary">Enter</v-btn>
+      <v-btn depressed small color="error">Back</v-btn>
+      
+       
     </v-navigation-drawer>
+    
 
     <v-app-bar app>
-      <p>app-ber</p>
+      <p>ประชาธิปไตย</p>
+      
     </v-app-bar>
 
     <v-main>
