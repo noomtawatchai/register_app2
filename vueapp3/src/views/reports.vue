@@ -1,5 +1,5 @@
 <template>
   <v-container>
-    เกี่ยวกับ
+    รายงาน
   </v-container>
 </template>
