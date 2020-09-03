@@ -1,13 +1,214 @@
 <template>
-    <v-container>
-    ลูกค้า
-    </v-container>
+  <v-container>
+    <v-form ref="form" v-model="valid" lazy-validation>
+      <v-row>
+        <!--  -->
+        <v-col cols="6">
+          <v-text-field
+            v-model="name"
+            :counter="30"
+            :rules="nameRules"
+            label="ชื่อ"
+            required
+          ></v-text-field
+        ></v-col>
+        <!-- นามสกุล -->
+        <v-col cols="6">
+          <v-text-field
+            v-model="lastname"
+            :counter="30"
+            :rules="lastnameRules"
+            label="นานสกุล"
+            required
+          ></v-text-field
+        ></v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="6"
+          ><v-text-field
+            v-model="email"
+            :rules="emailRules"
+            counter="50"
+            label="อีเมล"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col cols="6"
+          ><v-text-field
+            v-model="tel"
+            :rules="telRules"
+            :counter="10"
+            label="เบอร์โทรศัพท์"
+            required
+          ></v-text-field
+        ></v-col>
+      </v-row>
+      <v-row>
+        <v-col clos="2"
+          ><v-text-field
+            v-model="a_number"
+            :rules="addressRules"
+            :counter="20"
+            label="เลขที่อยู่"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col clos="2"
+          ><v-text-field
+            v-model="a_group"
+            :rules="addressRules"
+            :counter="20"
+            label="หมู่"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col clos="4"
+          ><v-text-field
+            v-model="a_road"
+            :rules="addressRules"
+            :counter="20"
+            label="ถนน"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col clos="4"
+          ><v-text-field
+            v-model="a_lane"
+            :rules="addressRules"
+            :counter="20"
+            label="ซอย"
+            required
+          ></v-text-field
+        ></v-col>
+      </v-row>
+      <v-row>
+        <v-col clos="4"
+          ><v-text-field
+            v-model="a_subdis"
+            :rules="addressRules"
+            :counter="20"
+            label="ตำบล"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col clos="4"
+          ><v-text-field
+            v-model="a_dis"
+            :rules="addressRules"
+            :counter="20"
+            label="อำเภท"
+            required
+          ></v-text-field
+        ></v-col>
+        <v-col clos="4"
+          ><v-text-field
+            v-model="a_province"
+            :rules="addressRules"
+            :counter="20"
+            label="จังหวัด"
+            required
+          ></v-text-field
+        ></v-col>
+      </v-row>
+      <v-select
+        v-model="select"
+        :items="sex"
+        :rules="[v => !!v || 'กรุณาเลือกเพศ']"
+        label="เพศ"
+        required
+      ></v-select>
+      <v-checkbox
+        v-model="checkbox"
+        :rules="checkboxRules"
+        label="ยอมรับเงื่อนไข"
+        required
+      ></v-checkbox>
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+        สมัครสมาชิก
+      </v-btn>
+      <v-btn color="error" class="mr-4" @click="reset">
+        เคลียร์
+      </v-btn>
+      <v-row>
+          
+      </v-row>
 
+      <!-- <v-btn
+      color="warning"
+      @click="resetValidation"
+    >
+      เคลียร์การตรวจสอบ
+    </v-btn> -->
+    </v-form>
+  </v-container>
 </template>
-
 <script>
-export default {};
-</script>
+export default {
+  data: () => ({
+    valid: false,
+    name: "",
+    nameRules: [
+      v => !!v || "กรุณากรอกชื่อ",
+      v => (v && v.length <= 30) || "ชื่อต้องมีขนาดไม่เกิน 30 ตัวอักษร"
+    ],
+    lastname: "",
+    lastnameRules: [
+      v => !!v || "กรุณากรอกนามสกุล",
+      v => (v && v.length <= 30) || "นามสกุลต้องมีขนาดไม่เกิน 30 ตัวอักษร"
+    ],
+    email: "",
+    emailRules: [
+      v => !!v || "กรุณากรอก อีเมล",
+      v => /.+@.+\..+/.test(v) || "กรอกอีเมลให้ถูกต้อง",
+      v => (v && v.length <= 50) || "อีเมลต้องมีความยังไม่เกิน 50 ตัวอักษร"
+    ],
+    tel: "",
+    telRules: [
+      v => !!v || "กรุณากรอกเบอร์โทรศัทพ์",
+      v => (v && v.length <= 10) || "ต้องมีความยาวไม่เกิน 10 หลัก"
+    ],
+    checkboxRules: [v => !!v || "คุณต้องกรอกยอมรับเงื่อนนไขก่อนสมัครสมาชิก"],
+    select: null,
+    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    sex: ["ชาย", "หญิง"],
+    checkbox: false,
+    a_number: "",
+    a_group: "",
+    a_road: "",
+    a_lane: "",
+    a_subdis: "",
+    a_dis: "",
+    a_province: "",
+    addressRules: [
+      v => !!v || "กรุณากรอกข้อมูล",
+      v => (v && v.length <= 20) || "ต้องมีความยังไม่เกิน 20 ตัวอักษร"
+    ],
+  }),
+  methods: {
+    validate() {
+      this.$refs.form.validate();
+      console.log(this.name)
+      console.log(this.lastname)
+      console.log(this.email)
+      console.log(this.tel)
+      console.log(this.select)
+      console.log(this.a_number)
+      console.log(this.a_group)
+      console.log(this.a_lane)
+      console.log(this.a_road)
+      console.log(this.a_subdis)
+      console.log(this.a_dis)
+      console.log(this.a_province)
 
-<style>
-</style>
+      
+    },
+    reset() {
+      this.$refs.form.reset();
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation();
+    }
+  }
+};
+</script>
+<style></style>
