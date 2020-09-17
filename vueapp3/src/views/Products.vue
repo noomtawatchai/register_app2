@@ -240,11 +240,12 @@ export default {
  
     search: "",
     headers: [ 
+      { text: "ประเภท", value: "c" },
       {text:"รหัสสินค้า",value:"no_p"},
       {
         text: "ชื่อสินค้า",
         value: "name_p"},
-       { text: "ประเภท", value: "c" },
+       
          { text: "ความยาวสินค้า", value: "length_p" },
           { text: "ความสูงสินค้า", value: "height_p" },
            { text: "ความกว้างสินค้า", value: "width_p" },
